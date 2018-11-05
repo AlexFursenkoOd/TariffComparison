@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace TariffComparison
 {
-    class BasicTariff : IElectricityTariff
+    public class BasicTariff : IElectricityTariff
     {
         private readonly double _baseCostPerMonth;
         private readonly double _consumptionCosts;
 
-        public string Name { get
-            {
-                return "Basic electricity tariff";
-            }
-        }
+        public string Name => "Basic electricity tariff";
 
         public BasicTariff(double baseCostPerMonth, double consumptionCosts)
         {

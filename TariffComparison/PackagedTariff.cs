@@ -6,24 +6,18 @@ using System.Threading.Tasks;
 
 namespace TariffComparison
 {
-    class PackagedTariff : IElectricityTariff
+    public class PackagedTariff : IElectricityTariff
     {
         private readonly double _consumptionCosts;
-        private readonly double _pachageConsumptionAmount;
+        private readonly double _packageConsumptionAmount;
         private readonly double _packageCost;
 
-        public string Name
-        {
-            get
-            {
-                return "Packaged tariff";
-            }
-        }
+        public string Name => "Packaged tariff";
 
         public PackagedTariff(double packageConsumptionAmount, double packageCost, double consumptionCosts)
         {
             _consumptionCosts = consumptionCosts;
-            _pachageConsumptionAmount = packageConsumptionAmount;
+            _packageConsumptionAmount = packageConsumptionAmount;
             _packageCost = packageCost;
         }
 
@@ -31,13 +25,13 @@ namespace TariffComparison
 
         public double GetAnnualCosts(double electricity)
         {
-            if (electricity <= _pachageConsumptionAmount)
+            if (electricity <= _packageConsumptionAmount)
             {
                 return _packageCost;
             }
             else
             {
-                var consumptionOverhead = electricity - _pachageConsumptionAmount;
+                var consumptionOverhead = electricity - _packageConsumptionAmount;
                 return _packageCost + consumptionOverhead * _consumptionCosts;
             }
         }

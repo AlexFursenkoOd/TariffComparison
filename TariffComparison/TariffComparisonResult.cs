@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TariffComparison
 {
-    class TariffComparisonResult
+    public class TariffComparisonResult
     {
         public string Name { get; set; }
         public double AnnualCosts { get; set; }
