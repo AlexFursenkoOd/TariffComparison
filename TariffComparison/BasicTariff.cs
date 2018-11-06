@@ -24,7 +24,7 @@ namespace TariffComparison
         public double GetAnnualCosts(double consumption)
         {
             if (consumption < 0)
-                throw new ArgumentException("Consumption can't be less them 0");
+                throw new ArgumentException("Consumption can't be less then 0");
 
             return 12 * _baseCostPerMonth + consumption * _consumptionCosts;
         }
