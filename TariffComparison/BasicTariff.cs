@@ -21,9 +21,12 @@ namespace TariffComparison
 
         public BasicTariff() : this(5, 0.22) { }
 
-        public double GetAnnualCosts(double electricity)
+        public double GetAnnualCosts(double consumption)
         {
-            return 12 * _baseCostPerMonth + electricity * _consumptionCosts;
+            if (consumption < 0)
+                throw new ArgumentException("Consumption can't be less them 0");
+
+            return 12 * _baseCostPerMonth + consumption * _consumptionCosts;
         }
     }
 }

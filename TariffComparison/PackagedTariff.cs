@@ -23,15 +23,18 @@ namespace TariffComparison
 
         public PackagedTariff() : this(4000, 800, 0.30) { }
 
-        public double GetAnnualCosts(double electricity)
+        public double GetAnnualCosts(double consumption)
         {
-            if (electricity <= _packageConsumptionAmount)
+            if (consumption < 0)
+                throw new ArgumentException("Consumption can't be less them 0");
+
+            if (consumption <= _packageConsumptionAmount)
             {
                 return _packageCost;
             }
             else
             {
-                var consumptionOverhead = electricity - _packageConsumptionAmount;
+                var consumptionOverhead = consumption - _packageConsumptionAmount;
                 return _packageCost + consumptionOverhead * _consumptionCosts;
             }
         }

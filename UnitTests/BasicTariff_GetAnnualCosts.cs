@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using TariffComparison;
 
 namespace UnitTests
@@ -20,6 +21,18 @@ namespace UnitTests
 
             // Assert
             Assert.AreEqual(cost, annualCosts, "Annual cost calculated incorrectly");
+        }
+
+        [Test]
+        [TestCase(-1)]
+        public void ShouldThroughArgumentException(double consumption)
+        {
+            // Arrange
+            var basicTariff = new BasicTariff();
+
+            // Act
+            // Assert
+            Assert.Throws<ArgumentException>(() => basicTariff.GetAnnualCosts(consumption), "Should throw ArgumentException when consumption less 0");
         }
     }
 }
